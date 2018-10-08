@@ -1,0 +1,36 @@
+一.命令行
+
+1、获取应用的包名和activity名
+获取当前activity：adb shell dumpsys activity activities
+获取实时activity：adb shell logcat | grep ActivityManager
+		  adb logcat | findstr START
+启动页 cmp=com.eno.xyzq.page.test/com.eno.pages.support.Activity_login
+首页 cmp=com.eno.xyzq.page.test/com.eno.pages.main.MainActivity
+
+2、冷热启动某个应用： adb shell am start -W -n packageName/.activityName
+3、冷启动关闭：adb shell am force-stop packageName
+4、热启动关闭back键/home键：adb shell input keyevent 3
+5、热启动和冷启动：热启动是指应用在后台运行时，切换该应用到前台；冷启动是指全新启动一个应用。
+
+
+冷启动
+adb shell am force-stop com.eno.xyzq.page
+adb shell am start -W -n com.eno.xyzq.page/com.eno.pages.support.Activity_login
+
+热启动
+adb shell input keyevent 3
+
+获取进程ID
+adb shell 
+ps| grep com.eno.xyzq.page
+
+获取进程流量
+adb shell cat /proc/pid/net/dev
+
+Requirement already satisfied: Appium-Python-Client in c:\python27\lib\site-pack
+ages (0.19)
+Requirement already satisfied: selenium>=2.47.0 in c:\python27\lib\site-packages
+ (from Appium-Python-Client) (3.14.1)
+Requirement already satisfied: urllib3 in c:\python27\lib\site-packages (from se
+lenium>=2.47.0->Appium-Python-Client) (1.23)
+
